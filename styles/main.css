@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Offside&family=Onest:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  /* Light Theme */
+  --bg-light: #f2f4f8;
+  --surface-light: #ffffff;
+  --text-light: #121212;
+  --primary-light: #007aff; /* iOS blue */
+  --secondary-light: #00cfc1; /* teal */
+  --accent-light: #ff3b6a; /* rose red */
+  --card-light: rgba(255, 255, 255, 0.85);
+  --border-light: rgba(0, 0, 0, 0.08);
+  --shadow-light: rgba(0, 0, 0, 0.06);
+
+  /* Dark Theme */
+  --bg-dark: #0d1117;
+  --surface-dark: #161b22;
+  --text-dark: #f1f1f1;
+  --primary-dark: #4ea1ff;
+  --secondary-dark: #00ffe6;
+  --accent-dark: #ff6488;
+  --card-dark: rgba(22, 27, 34, 0.9);
+  --border-dark: rgba(255, 255, 255, 0.06);
+  --shadow-dark: rgba(0, 0, 0, 0.4);
+
+  /* Active Theme */
+  --bg: var(--bg-light);
+  --surface: var(--surface-light);
+  --text: var(--text-light);
+  --primary: var(--primary-light);
+  --secondary: var(--secondary-light);
+  --accent: var(--accent-light);
+  --card: var(--card-light);
+  --border: var(--border-light);
+  --shadow: var(--shadow-light);
+}
+
+[data-theme="dark"] {
+  --bg: var(--bg-dark);
+  --surface: var(--surface-dark);
+  --text: var(--text-dark);
+  --primary: var(--primary-dark);
+  --secondary: var(--secondary-dark);
+  --accent: var(--accent-dark);
+  --card: var(--card-dark);
+  --border: var(--border-dark);
+  --shadow: var(--shadow-dark);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* Base Styles */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Onest", sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+  width: 100dvw;
+  min-height: 100vh;
+  min-height: 200dvh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.6em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: "Offside", sans-serif;
+}
+
+h2 {
+  font-size: 2.2rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+main {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-image: linear-gradient(
+      to right,
+      rgba(79, 79, 79, 0.18) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(79, 79, 79, 0.18) 1px, transparent 1px);
+  background-size: 14px 24px;
+
+  mask-image: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    black 70%,
+    transparent 110%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    black 70%,
+    transparent 110%
+  );
+}
+
+main h5 {
+  font-weight: 500;
+  opacity: 0.8;
+  margin-top: -10px;
+}
+main .title {
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+}
+
+.wallist-continer {
+  position: relative;
+  width: 100%;
+  margin-top: 40px;
+}
+.wallist-continer input {
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background-color: var(--card-light);
+  border: 1px solid var(--border);
+  padding-left: 16px;
+  outline: none;
+  color: var(--text);
+  font-family: "Onest", sans-serif;
+}
+.wallist-continer input:focus {
+  background-color: var(--card-light);
+  border: 1px solid var(--border);
+  outline: none;
+}
+
+.wallist-continer button {
+  position: absolute;
+  height: 38px;
+  width: 38px;
+  top: 6px;
+  right: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  opacity: 0.9;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 12;
+  transition: opacity 0.2s ease;
+  transition: scale 0.2s ease;
+}
+.wallist-continer button .material-symbols-outlined {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--bg);
+}
+.wallist-continer button:hover {
+  opacity: 1;
+  scale: 1.09;
+}
+
+
+.intro-container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.intro{
+  width: 500px;
+  overflow-x: hidden;
+  text-wrap: wrap;
+  margin-top: 50px;
+  text-align: center;
+}
