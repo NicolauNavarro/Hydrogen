@@ -1,0 +1,25 @@
+
+  const toggle = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+
+  // On load: apply stored theme or system preference
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    root.setAttribute('data-theme', 'dark');
+    toggle.innerHTML = '<span class="material-symbols-rounded">light_mode</span>';
+  }
+
+  toggle.addEventListener('click', () => {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      root.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+      toggle.innerHTML = '<span class="material-symbols-rounded">dark_mode</span>';
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      toggle.innerHTML = '<span class="material-symbols-rounded">light_mode</span>';
+    }
+  });
