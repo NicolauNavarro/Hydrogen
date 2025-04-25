@@ -183,8 +183,9 @@ main .title {
   outline: none;
   color: var(--text);
   font-family: "Onest", sans-serif;
+  transition: 0.2s ease;
 }
-.wallist-continer form{
+.wallist-continer form {
   width: 100%;
 }
 .wallist-continer input:focus {
@@ -192,6 +193,70 @@ main .title {
   border: 1px solid var(--border);
   outline: none;
 }
+
+.wallist-continer input.accept {
+  color: var(--card);
+}
+
+.wallist-continer .check {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 50px;
+  width: 50px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 15px;
+  opacity: 0;
+  font-size: 30px;
+  border-radius: 25px;
+  z-index: 2;
+  background-color: var(--secondary);
+  color: var(--card);
+  font-weight: 400;
+}
+.wallist-continer:has(input.accept) {
+  pointer-events: none;
+}
+.wallist-continer:has(input.accept) .check {
+  animation: --airplane 2s ease-in-out forwards;
+}
+
+@keyframes --airplane {
+  0% {
+    width: 50px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+    width: 100%;
+    left: 0;
+    right: unset;
+  }
+  80% {
+    opacity: 1;
+    width: 100%;
+    left: unset;
+    right: 0;
+  }
+  90%{
+    opacity: 1;
+    left: unset;
+    right: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 50px;
+    left: unset;
+    right: 0;
+  }
+}
+
 .wallist-continer button {
   position: absolute;
   height: 38px;
@@ -213,6 +278,9 @@ main .title {
   z-index: 12;
   transition: opacity 0.2s ease;
   transition: scale 0.2s ease;
+}
+.wallist-continer:has(input.accept) button {
+  opacity: 0;
 }
 .wallist-continer button .material-symbols-rounded {
   font-size: 18px;

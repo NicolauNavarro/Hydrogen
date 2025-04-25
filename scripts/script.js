@@ -23,3 +23,31 @@
       toggle.innerHTML = '<span class="material-symbols-rounded">light_mode</span>';
     }
   });
+
+
+
+const wallistForm = document.querySelector("#wallist-form")
+const emailInput = document.querySelector("#email")
+
+wallistForm.addEventListener("submit", (event) => {
+  event.preventDefault()
+  const email = emailInput.value
+
+
+
+  acceptMailFormAnimation()
+
+})
+
+const airplane = document.querySelector(".check")
+
+function acceptMailFormAnimation(){
+  emailInput.value = ""
+  emailInput.placeholder = ""
+  emailInput.classList.add("accept")
+
+  airplane.addEventListener("animationend", () => {
+    emailInput.classList.remove("accept")
+    emailInput.placeholder = "Email adress"
+  })
+}
