@@ -52,7 +52,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-/* Base Styles */
 body {
   background-color: var(--bg);
   color: var(--text);
@@ -145,7 +144,6 @@ main::before {
     transparent 110%
   );
 }
-
 main h5 {
   font-weight: 500;
   opacity: 0.8;
@@ -155,8 +153,22 @@ main .title {
   display: flex;
   flex-direction: column;
   z-index: 20;
+  animation: --fade-out ease forwards;
+  animation-timeline: view();
+  animation-range: 60%;
+  transform-style: preserve-3d;
 }
-
+@keyframes --fade-out{
+  from{
+    opacity: 1;
+    scale: 1;
+    transform: rotateZ(0deg);
+  }
+  to{
+    opacity: 0;
+    transform: rotateZ(20deg);
+  }
+}
 .wallist-continer {
   position: relative;
   width: 100%;
@@ -178,7 +190,6 @@ main .title {
   border: 1px solid var(--border);
   outline: none;
 }
-
 .wallist-continer button {
   position: absolute;
   height: 38px;
@@ -210,18 +221,52 @@ main .title {
   opacity: 1;
   scale: 1.09;
 }
-
-
-.intro-container{
+.intro-container {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.intro{
+.intro {
   width: 500px;
   overflow-x: hidden;
   text-wrap: wrap;
   margin-top: 50px;
   text-align: center;
+}
+
+
+
+
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 20px;
+  z-index: 20;
+}
+.logo{
+  font-weight: 600;
+  font-size: 16px;
+  opacity: 0.8;
+}
+nav .menu{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+nav .menu a{
+  text-decoration: none;
+  color: var(--text);
+  opacity: 0.8;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+nav .menu a:hover{
+  opacity: 1;
 }
