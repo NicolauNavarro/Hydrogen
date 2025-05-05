@@ -1,11 +1,8 @@
 const toggle = document.getElementById("theme-toggle");
 const root = document.documentElement;
-
-// On load: apply stored theme or system preference
 const savedTheme = localStorage.getItem("theme");
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+if (savedTheme === "dark") {
   root.setAttribute("data-theme", "dark");
   toggle.innerHTML = '<span class="material-symbols-rounded">light_mode</span>';
 }
@@ -24,6 +21,8 @@ toggle.addEventListener("click", () => {
       '<span class="material-symbols-rounded">light_mode</span>';
   }
 });
+
+
 
 const wallistForm = document.querySelector("#wallist-form");
 const emailInput = document.querySelector("#email");
@@ -49,3 +48,11 @@ function acceptMailFormAnimation() {
     emailInput.placeholder = "Email adress";
   });
 }
+
+
+
+
+const body = document.querySelector("body")
+document.addEventListener("DOMContentLoaded", () => {
+  body.classList.remove("load-state")
+})

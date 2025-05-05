@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body{
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s ease;
+        color: black;
+    }
+    .center{
+        width: 600px;
+        height: 400px;
+        border-radius: 20px;
+        background-color: #d3d3d3;
+        z-index: 20;
+    }
+    body:hover:has(.center:not(:hover)){
+        background-color: #626262;
+        color: white;
+    }
+    body p{
+        position: absolute;
+        left: -100%;
+        font-size: 10rem;
+        animation: --move 6s linear infinite;
+        text-wrap: nowrap;
+    }
+    body p:last-of-type{
+        animation-delay: 2s;
+        margin-bottom: 300px;
+    }
+    @keyframes --move{
+        from{
+            left: -120%;
+            
+        }
+        to{
+            left: 120%;
+            
+        }
+    }
+</style>
+<body>
+    <p>
+        GET STARTED FOR FREE heehehe hehehhe hehehhe hehhehe 
+    </p>
+    <p>
+        CREATE AMAZING THINGS NOW nononono nonono nonoo onono
+    </p>
+   
+
+
+    <div class="center"></div>
+
+
+    
+</body>
+</html>
