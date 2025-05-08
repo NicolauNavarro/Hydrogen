@@ -71,13 +71,15 @@ body {
   overflow-x: hidden;
   position: relative;
   animation: --fade-content-in 1s ease forwards;
-  opacity: 0;
 }
 body.load-state {
   opacity: 0;
   animation: none;
 }
 @keyframes --fade-content-in {
+  from{
+    opacity: 0;
+  }
   to {
     opacity: 1;
   }
@@ -330,9 +332,11 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 20px;
-  z-index: 20;
+  padding-left: 20px;
+  padding-right: 18px;
+  z-index: 99;
 }
+
 .logo {
   font-weight: 600;
   font-size: 16px;
@@ -341,7 +345,23 @@ nav {
 nav .menu {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
+  height: 36px;
+  padding-right: 2px;
+  padding-left: 18px;
+  border-radius: 36px;
+  transition: 0.2s ease;
+  transform-origin: right ;
+}
+nav .menu:hover{
+  background-color: var(--bg);
+  scale: 1.04;
+  margin-top: 10px;
+  box-shadow: 0px 0px 10px 3px var(--shadow);
+}
+nav .menu:hover button{
+  box-shadow: none;
+  opacity: 0.9;
 }
 nav .menu a {
   text-decoration: none;
@@ -352,6 +372,26 @@ nav .menu a {
 }
 nav .menu a:hover {
   opacity: 1;
+}
+nav button{
+  height: 32px;
+  margin-left: 4px;
+  width: 70px;
+  border-radius: 16px;
+  background-color: var(--card);
+  border: 2px solid var(--border);
+  outline: none;
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-weight: 600;
+  box-shadow: 0px 0px 6px var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav button:hover{
+  background-color: var(--bg);
 }
 
 main img {
@@ -368,7 +408,7 @@ main img {
 
 main .call-action {
   position: absolute;
-  transform: rotate(-10deg) translateX(-550px) translateY(-230px);
+  transform: rotate(-10deg) translateX(-550px) translateY(-243px);
   font-size: 18px;
   text-transform: uppercase;
   width: 350px;
@@ -382,6 +422,7 @@ main .call-action {
 }
 main .call-action p {
   margin-top: -20px;
+  margin-left: 4px;
 }
 
 #theme-toggle {
@@ -413,4 +454,74 @@ main .call-action p {
 #theme-toggle .material-symbols-rounded {
   font-weight: 500;
   line-height: 0;
+}
+
+
+@keyframes --rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+svg {
+  animation: --rotate 30s linear infinite;
+  transform-origin: center;
+}
+
+.globe{
+  position: absolute;
+  --globe-color: var(--accent);
+  animation:  --change-color ease forwards;
+  animation-timeline: view();
+  animation-range-end: 75%;
+}
+@keyframes --change-color{
+  0%{
+    --globe-color: var(--accent);
+    opacity: 0;
+  }
+  33%{
+    --globe-color: var(--primary);
+  }
+  100%{
+    --globe-color: var(--secondary);
+  }
+}
+
+section.world{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  animation: --fade-in ease forwards;
+  animation-timeline: view();
+  animation-range-end: 50%;
+}
+
+@keyframes --fade-in{
+  0%, 30%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+
+.scroller{
+  height: 400vh;
+  height: 300dvh;
+  width: 100%;
+}
+
+.back-frase{
+  position: absolute;
+  left: 10vw;
+  top: 20vh;
+  scale: 1;
 }
