@@ -25,7 +25,7 @@
   --border-dark: rgba(255, 255, 255, 0.06);
   --shadow-dark: rgba(0, 0, 0, 0.4);
   --invertArrow-dark: invert(100%);
-  --backdrop-dark: #0d111799  ;
+  --backdrop-dark: #0d111799;
 
   /* Active Theme */
   --bg: var(--bg-light);
@@ -81,7 +81,7 @@ body.load-state {
   animation: none;
 }
 @keyframes --fade-content-in {
-  from{
+  from {
     opacity: 0;
   }
   to {
@@ -355,15 +355,15 @@ nav .menu {
   padding-left: 18px;
   border-radius: 36px;
   transition: 0.2s ease;
-  transform-origin: right ;
+  transform-origin: right;
 }
-nav .menu:hover{
+nav .menu:hover {
   background-color: var(--bg);
   scale: 1.04;
   margin-top: 10px;
   box-shadow: 0px 0px 10px 3px var(--shadow);
 }
-nav .menu:hover button{
+nav .menu:hover button {
   box-shadow: none;
   opacity: 0.9;
 }
@@ -377,7 +377,7 @@ nav .menu a {
 nav .menu a:hover {
   opacity: 1;
 }
-nav button{
+nav button {
   height: 32px;
   margin-left: 4px;
   width: 70px;
@@ -394,7 +394,7 @@ nav button{
   align-items: center;
   justify-content: center;
 }
-nav button:hover{
+nav button:hover {
   background-color: var(--bg);
 }
 
@@ -460,41 +460,45 @@ main .call-action p {
   line-height: 0;
 }
 
-
 @keyframes --rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 svg {
   animation: --rotate 30s linear infinite;
   transform-origin: center;
 }
 
-.globe{
+.globe {
   position: absolute;
   --globe-color: var(--accent);
-  animation:  --change-color ease forwards;
+  animation: --change-color ease forwards;
   animation-timeline: scroll(root block);
-  animation-range: 100vh 700vh;
+  animation-range: 100vh 800vh;
   border-radius: 50%;
   padding: 0px;
   background: radial-gradient(circle, var(--backdrop) 20%, transparent 100%);
   z-index: 2;
-
 }
-@keyframes --change-color{
-  0%, 10%{
+@keyframes --change-color {
+  0%,
+  20% {
     --globe-color: var(--accent);
   }
-  40%{
+  46% {
     --globe-color: var(--primary);
   }
-  70%, 100%{
+  72%,
+  100% {
     --globe-color: var(--secondary);
   }
 }
 
-section.world{
+section.world {
   width: 100%;
   display: flex;
   align-items: center;
@@ -509,26 +513,139 @@ section.world{
   animation: --fade-in ease forwards;
   animation-timeline: view();
   animation-range-end: 50%;
+  text-align: center;
 }
 
-@keyframes --fade-in{
-  0%, 30%{
+@keyframes --fade-in {
+  0%,
+  30% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
   }
 }
 
-
-.scroller{
-  height: 600vh;
-  height: 600dvh;
+.scroller {
+  height: 700vh;
+  height: 700dvh;
   width: 100%;
 }
 
-.back-frase{
+.back-frase {
   position: absolute;
   z-index: -1;
   scale: 3;
+  animation: --back-frase ease forwards;
+  animation-timeline: scroll(root block);
+  animation-range: 100vh 800vh;
+}
+@keyframes --back-frase{
+  0%,
+  30% {
+    margin-right: 0px;
+    margin-bottom: 100px;
+  }
+  36%, 60% {
+    margin-right: 220px;
+    margin-bottom: 100px;
+  }
+  72%,
+  100% {
+    --globe-color: var(--secondary);
+  }
+}
+.back-frase2{
+  position: absolute;
+  z-index: -1;
+  scale: 2;
+  margin-top: 0px;
+  margin-left: 0px;
+  text-transform: uppercase;
+  font-weight: 800;
+  opacity: 0;
+  animation: --back-frase2 ease forwards;
+  animation-timeline: scroll(root block);
+  animation-range: 100vh 800vh;
+  text-align: center;
+}
+@keyframes --back-frase2{
+  0%,
+  30% {
+    opacity: 0;
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+  36%, 60% {
+    opacity: 1;
+    margin-left: 280px;
+    margin-top: 100px;
+  }
+  72%,
+  100% {
+    --globe-color: var(--secondary);
+  }
+}
+
+section.world .carousel {
+  width: 80%;
+  transform-style: preserve-3d;
+  z-index: 8;
+}
+section.world .carousel .card {
+  height: 230px;
+  width: 320px;
+  background-color: red;
+}
+
+.slider {
+  position: absolute;
+  width: 200px;
+  height: 250px;
+  top: 10%;
+  left: calc(50% - 100px);
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  animation: autoRun 20s linear infinite;
+  z-index: 3;
+  margin-top: 30px;
+}
+@keyframes autoRun {
+  from {
+    transform: perspective(1000px) rotateX(-12deg) rotateY(0deg);
+  }
+  to {
+    transform: perspective(1000px) rotateX(-12deg) rotateY(360deg);
+  }
+}
+
+.slider .item {
+  position: absolute;
+  inset: 0 0 0 0;
+  transform: rotateY(
+      calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
+    )
+    translateZ(550px);
+}
+.slider .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-cont{
+  animation: --slider ease forwards;
+  animation-timeline: scroll(root block);
+  animation-range: 300vh 600vh;
+  z-index: 10;
+}
+@keyframes --slider{
+  from{
+    opacity: 0;
+    padding-top: 20px;
+  }
+  to{
+    opacity: 1;
+    padding-top: 0px;
+  }
 }
